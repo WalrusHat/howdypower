@@ -493,7 +493,7 @@ const HomePage = () => {
                     <a href="mailto:info@howdypower.com" className="text-orange-600 hover:underline">info@howdypower.com</a>
                   </div>
                 </div>
-                <div className="flex items-start">
+                {/* <div className="flex items-start">
                   <Phone className="w-6 h-6 text-orange-600 mr-3 mt-1" />
                   <div>
                     <p className="font-medium text-gray-700">Phone</p>
@@ -506,7 +506,7 @@ const HomePage = () => {
                     <p className="font-medium text-gray-700">Headquarters</p>
                     <p className="text-gray-600">100 Congress Ave, Suite 200<br />Austin, TX 78701</p>
                   </div>
-                </div>
+                </div> */}
               </div>
             </div>
             

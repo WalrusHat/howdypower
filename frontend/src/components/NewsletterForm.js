@@ -19,22 +19,20 @@ const NewsletterForm = () => {
     setSubmitStatus({ success: null, message: '' });
 
     try {
-      // For demo purposes, simulate an API call
-      // In production, use: await apiService.subscribeToNewsletter(email);
-      await new Promise(resolve => setTimeout(resolve, 1000));
+        const response = await apiService.subscribeToNewsletter(email);
+        setSubmitStatus({
+          success: true,
+          message: response.message || 'Thank you for subscribing to our newsletter!'
+        });
+        
+        // Clear email on success
+        setEmail('');
+      } catch (error) {
+        setSubmitStatus({
+          success: false,
+          message: error.message || 'Something went wrong. Please try again.'
+        });
       
-      setSubmitStatus({
-        success: true,
-        message: 'Thank you for subscribing to our newsletter!'
-      });
-      
-      // Clear email on success
-      setEmail('');
-    } catch (error) {
-      setSubmitStatus({
-        success: false,
-        message: error.message || 'Something went wrong. Please try again.'
-      });
     } finally {
       setIsSubmitting(false);
     }

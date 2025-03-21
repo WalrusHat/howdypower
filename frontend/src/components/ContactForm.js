@@ -28,22 +28,20 @@ const ContactForm = () => {
     setSubmitStatus({ success: null, message: '' });
 
     try {
-      // For demo purposes, simulate an API call
-      // In production, use: await apiService.submitContactForm(formData);
-      await new Promise(resolve => setTimeout(resolve, 1000));
+        const response = await apiService.submitContactForm(formData);
+        setSubmitStatus({
+          success: true,
+          message: response.message || 'Thank you for your message! We will get back to you soon.'
+        });
+        
+        // Clear form on success
+        setFormData({ name: '', email: '', message: '' });
+      } catch (error) {
+        setSubmitStatus({
+          success: false,
+          message: error.message || 'Something went wrong. Please try again.'
+        });
       
-      setSubmitStatus({
-        success: true,
-        message: 'Thank you for your message! We will get back to you soon.'
-      });
-      
-      // Clear form on success
-      setFormData({ name: '', email: '', message: '' });
-    } catch (error) {
-      setSubmitStatus({
-        success: false,
-        message: error.message || 'Something went wrong. Please try again.'
-      });
     } finally {
       setIsSubmitting(false);
     }
